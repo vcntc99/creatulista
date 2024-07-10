@@ -1,17 +1,12 @@
-document.getElementById('file-input').addEventListener('change', handleFileSelect);
-
-function handleFileSelect(event) {
-    const file = event.target.files[0];
-    if (file) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const contents = e.target.result;
-            const names = contents.split(/\r?\n/).filter(name => name.trim() !== '');
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('names.txt')
+        .then(response => response.text())
+        .then(data => {
+            const names = data.split(/\r?\n/).filter(name => name.trim() !== '');
             displayNames(names);
-        };
-        reader.readAsText(file);
-    }
-}
+        })
+        .catch(error => console.error('Error fetching names:', error));
+});
 
 function displayNames(names) {
     const container = document.getElementById('name-container');
