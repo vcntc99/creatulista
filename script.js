@@ -16,17 +16,17 @@ function displayNames(names) {
         const nameItem = document.createElement('div');
         nameItem.classList.add('name-item');
         
-        const nameLabel = document.createElement('span');
-        nameLabel.textContent = name;
-
         const nameInput = document.createElement('input');
         nameInput.type = 'number';
         nameInput.min = 1;
         nameInput.max = names.length;
         nameInput.value = index + 1;
 
-        nameItem.appendChild(nameLabel);
+        const nameLabel = document.createElement('span');
+        nameLabel.textContent = name;
+
         nameItem.appendChild(nameInput);
+        nameItem.appendChild(nameLabel);
         container.appendChild(nameItem);
     });
 }
