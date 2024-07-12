@@ -1,45 +1,45 @@
 document.addEventListener('DOMContentLoaded', () => {
-    fetch('names.txt')
+    fetch('records.txt')
         .then(response => response.text())
         .then(data => {
-            const names = data.split(/\r?\n/).filter(name => name.trim() !== '');
-            displayNames(names);
+            const records = data.split(/\r?\n/).filter(record => record.trim() !== '');
+            displayRecords(records);
         })
-        .catch(error => console.error('Error fetching names:', error));
+        .catch(error => console.error('Error fetching records:', error));
 });
 
-function displayNames(names) {
-    const container = document.getElementById('name-container');
+function displayRecords(records) {
+    const container = document.getElementById('record-container');
     container.innerHTML = ''; // Limpiar contenedor
 
-    names.forEach((name, index) => {
-        const nameItem = document.createElement('div');
-        nameItem.classList.add('name-item');
-        
-        const nameInput = document.createElement('input');
-        nameInput.type = 'number';
-        nameInput.min = 1;
-        nameInput.max = names.length;
-        nameInput.value = index + 1;
+    records.forEach((record, index) => {
+        const recordItem = document.createElement('div');
+        recordItem.classList.add('record-item');
 
-        const nameLabel = document.createElement('span');
-        nameLabel.textContent = name;
+        const recordInput = document.createElement('input');
+        recordInput.type = 'number';
+        recordInput.min = 1;
+        recordInput.max = records.length;
+        recordInput.value = index + 1;
 
-        nameItem.appendChild(nameInput);
-        nameItem.appendChild(nameLabel);
-        container.appendChild(nameItem);
+        const recordLabel = document.createElement('span');
+        recordLabel.textContent = record;
+
+        recordItem.appendChild(recordInput);
+        recordItem.appendChild(recordLabel);
+        container.appendChild(recordItem);
     });
 }
 
-function sortNames() {
-    const nameItems = Array.from(document.getElementsByClassName('name-item'));
-    const sortedItems = nameItems.sort((a, b) => {
+function sortRecords() {
+    const recordItems = Array.from(document.getElementsByClassName('record-item'));
+    const sortedItems = recordItems.sort((a, b) => {
         const aValue = parseInt(a.querySelector('input').value, 10);
         const bValue = parseInt(b.querySelector('input').value, 10);
         return aValue - bValue;
     });
 
-    const container = document.getElementById('name-container');
+    const container = document.getElementById('record-container');
     container.innerHTML = ''; // Limpiar contenedor
 
     sortedItems.forEach(item => {
