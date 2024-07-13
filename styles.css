@@ -10,27 +10,16 @@ table {
 }
 
 th, td {
-    border: 1px solid green; /* Borde de las celdas en verde */
+    border: 1px solid black; /* Borde de las celdas en negro */
     padding: 8px;
     text-align: left; /* Alineación a la izquierda */
 }
 
 th {
-    background-color: orange; /* Encabezado en anaranjado */
+    background-color: #f2f2f2; /* Fondo claro para encabezados */
 }
 
-thead th {
-    background-color: yellow; /* Primer fila (encabezados) en amarillo */
-}
-
-tbody tr:nth-child(1) {
-    background-color: yellow; /* Primer fila del cuerpo de la tabla en amarillo */
-}
-
-tbody tr {
-    background-color: pink; /* Cuerpo de la tabla en rosa */
-}
-
-tbody tr td:first-child, thead th:first-child {
-    background-color: red; /* Primer columna en rojo */
+input {
+    width: 50px;
+    text-align: center;
 }
