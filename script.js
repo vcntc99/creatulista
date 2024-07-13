@@ -19,6 +19,10 @@ function displayHeaders(headers) {
     const headerItem = document.createElement('div');
     headerItem.classList.add('header-item');
 
+    const emptyHeader = document.createElement('span');
+    emptyHeader.style.minWidth = '50px'; // Espacio para el cuadro de numeración
+    headerItem.appendChild(emptyHeader);
+
     headers.forEach(header => {
         const headerLabel = document.createElement('span');
         headerLabel.textContent = header;
@@ -36,13 +40,6 @@ function displayRecords(records) {
         const recordItem = document.createElement('div');
         recordItem.classList.add('record-item');
 
-        const fields = record.split(',');
-        fields.forEach(field => {
-            const recordLabel = document.createElement('span');
-            recordLabel.textContent = field;
-            recordItem.appendChild(recordLabel);
-        });
-
         const recordInput = document.createElement('input');
         recordInput.type = 'number';
         recordInput.min = 1;
@@ -50,6 +47,14 @@ function displayRecords(records) {
         recordInput.value = index + 1;
 
         recordItem.appendChild(recordInput);
+
+        const fields = record.split(',');
+        fields.forEach(field => {
+            const recordLabel = document.createElement('span');
+            recordLabel.textContent = field;
+            recordItem.appendChild(recordLabel);
+        });
+
         container.appendChild(recordItem);
     });
 }
