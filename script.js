@@ -13,64 +13,58 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function displayHeaders(headers) {
-    const container = document.getElementById('header-container');
-    container.innerHTML = ''; // Limpiar contenedor
+    const headerRow = document.getElementById('header-row');
+    headerRow.innerHTML = ''; // Limpiar fila de encabezados
 
-    const headerItem = document.createElement('div');
-    headerItem.classList.add('header-item');
-
-    const emptyHeader = document.createElement('span');
-    emptyHeader.style.minWidth = '50px'; // Espacio para el cuadro de numeración
-    headerItem.appendChild(emptyHeader);
+    const emptyHeader = document.createElement('th');
+    headerRow.appendChild(emptyHeader);
 
     headers.forEach(header => {
-        const headerLabel = document.createElement('span');
-        headerLabel.textContent = header;
-        headerItem.appendChild(headerLabel);
+        const headerCell = document.createElement('th');
+        headerCell.textContent = header;
+        headerRow.appendChild(headerCell);
     });
-
-    container.appendChild(headerItem);
 }
 
 function displayRecords(records) {
-    const container = document.getElementById('record-container');
-    container.innerHTML = ''; // Limpiar contenedor
+    const tbody = document.getElementById('record-body');
+    tbody.innerHTML = ''; // Limpiar cuerpo de la tabla
 
     records.forEach((record, index) => {
-        const recordItem = document.createElement('div');
-        recordItem.classList.add('record-item');
+        const row = document.createElement('tr');
 
+        const cellInput = document.createElement('td');
         const recordInput = document.createElement('input');
         recordInput.type = 'number';
         recordInput.min = 1;
         recordInput.max = records.length;
         recordInput.value = index + 1;
-
-        recordItem.appendChild(recordInput);
+        cellInput.appendChild(recordInput);
+        row.appendChild(cellInput);
 
         const fields = record.split(',');
         fields.forEach(field => {
-            const recordLabel = document.createElement('span');
-            recordLabel.textContent = field;
-            recordItem.appendChild(recordLabel);
+            const cell = document.createElement('td');
+            cell.textContent = field;
+            row.appendChild(cell);
         });
 
-        container.appendChild(recordItem);
+        tbody.appendChild(row);
     });
 }
 
 function sortRecords() {
-    const recordItems = Array.from(document.getElementsByClassName('record-item'));
-    const sortedItems = recordItems.sort((a, b) => {
+    const rows = Array.from(document.querySelectorAll('#record-body tr'));
+    const sortedRows = rows.sort((a, b) => {
         const aValue = parseInt(a.querySelector('input').value, 10);
         const bValue = parseInt(b.querySelector('input').value, 10);
         return aValue - bValue;
     });
 
-    const container = document.getElementById('record-container');
-    container.innerHTML = ''; // Limpiar contenedor
+    const tbody = document.getElementById('record-body');
+    tbody.innerHTML = ''; // Limpiar cuerpo de la tabla
 
-    sortedItems.forEach(item => {
-        container.appendChild(item);
+    sortedRows.forEach(row => {
+        tbody.appendChild(row);
     });
 }

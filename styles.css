@@ -4,33 +4,22 @@ body {
     margin: 20px;
 }
 
-#header-container, #record-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
+table {
+    border-collapse: collapse;
+    margin: 0 auto;
 }
 
-.header-item, .record-item {
-    margin: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
+th, td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: left; /* Alineación a la izquierda */
 }
 
-.header-item {
-    font-weight: bold;
+th {
+    background-color: #f2f2f2;
 }
 
-.record-item input {
-    margin-right: 10px;
+input {
     width: 50px;
     text-align: center;
-}
-
-.record-item span, .header-item span {
-    display: inline-block;
-    min-width: 100px;
-    margin-right: 20px; /* Espacio adicional entre columnas */
-    text-align: left;  /* Alineación a la izquierda */
 }
