@@ -36,18 +36,18 @@ function displayRecords(records) {
         const recordItem = document.createElement('div');
         recordItem.classList.add('record-item');
 
-        const recordInput = document.createElement('input');
-        recordInput.type = 'number';
-        recordInput.min = 1;
-        recordInput.max = records.length;
-        recordInput.value = index + 1;
-
         const fields = record.split(',');
         fields.forEach(field => {
             const recordLabel = document.createElement('span');
             recordLabel.textContent = field;
             recordItem.appendChild(recordLabel);
         });
+
+        const recordInput = document.createElement('input');
+        recordInput.type = 'number';
+        recordInput.min = 1;
+        recordInput.max = records.length;
+        recordInput.value = index + 1;
 
         recordItem.appendChild(recordInput);
         container.appendChild(recordItem);

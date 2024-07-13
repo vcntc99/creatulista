@@ -23,13 +23,14 @@ body {
 }
 
 .record-item input {
-    margin-right: 10px;
+    margin-left: 10px;
     width: 50px;
     text-align: center;
 }
 
-.record-item span {
+.record-item span, .header-item span {
     display: inline-block;
     min-width: 100px;
-    text-align: left;
+    margin-right: 20px; /* Espacio adicional entre columnas */
+    text-align: right;  /* Alineación a la derecha */
 }
