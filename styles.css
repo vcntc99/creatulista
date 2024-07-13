@@ -4,20 +4,20 @@ body {
     margin: 20px;
 }
 
-#name-container {
+#record-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.name-item {
+.record-item {
     margin: 10px;
     display: flex;
     align-items: center;
 }
 
-.name-item input {
+.record-item input {
     margin-right: 10px;
     width: 50px;
     text-align: center;
