@@ -4,21 +4,32 @@ body {
     margin: 20px;
 }
 
-#record-container {
+#header-container, #record-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     margin-bottom: 20px;
 }
 
-.record-item {
+.header-item, .record-item {
     margin: 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+.header-item {
+    font-weight: bold;
 }
 
 .record-item input {
     margin-right: 10px;
     width: 50px;
     text-align: center;
+}
+
+.record-item span {
+    display: inline-block;
+    min-width: 100px;
+    text-align: left;
 }

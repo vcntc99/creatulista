@@ -2,11 +2,31 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch('records.txt')
         .then(response => response.text())
         .then(data => {
-            const records = data.split(/\r?\n/).filter(record => record.trim() !== '');
+            const lines = data.split(/\r?\n/).filter(line => line.trim() !== '');
+            const headers = lines[0].split(',');
+            const records = lines.slice(1);
+
+            displayHeaders(headers);
             displayRecords(records);
         })
         .catch(error => console.error('Error fetching records:', error));
 });
+
+function displayHeaders(headers) {
+    const container = document.getElementById('header-container');
+    container.innerHTML = ''; // Limpiar contenedor
+
+    const headerItem = document.createElement('div');
+    headerItem.classList.add('header-item');
+
+    headers.forEach(header => {
+        const headerLabel = document.createElement('span');
+        headerLabel.textContent = header;
+        headerItem.appendChild(headerLabel);
+    });
+
+    container.appendChild(headerItem);
+}
 
 function displayRecords(records) {
     const container = document.getElementById('record-container');
@@ -22,11 +42,14 @@ function displayRecords(records) {
         recordInput.max = records.length;
         recordInput.value = index + 1;
 
-        const recordLabel = document.createElement('span');
-        recordLabel.textContent = record;
+        const fields = record.split(',');
+        fields.forEach(field => {
+            const recordLabel = document.createElement('span');
+            recordLabel.textContent = field;
+            recordItem.appendChild(recordLabel);
+        });
 
         recordItem.appendChild(recordInput);
-        recordItem.appendChild(recordLabel);
         container.appendChild(recordItem);
     });
 }
