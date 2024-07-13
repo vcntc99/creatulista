@@ -1,22 +1,45 @@
 body {
     font-family: Arial, sans-serif;
-    text-align: center;
     margin: 20px;
+}
+
+.fixed-header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-bottom: 1px solid black;
+    z-index: 1000;
+    padding: 10px;
+}
+
+.fixed-header h1 {
+    margin: 0;
+    padding-left: 10px;
 }
 
 table {
     border-collapse: collapse;
-    margin: 0 auto;
+    margin: 80px auto 0; /* Espacio superior para acomodar el encabezado fijo */
+    width: 80%;
 }
 
 th, td {
-    border: 1px solid black; /* Borde de las celdas en negro */
+    border: 1px solid black;
     padding: 8px;
     text-align: left; /* Alineación a la izquierda */
 }
 
 th {
-    background-color: #f2f2f2; /* Fondo claro para encabezados */
+    background-color: #f2f2f2;
+}
+
+thead th {
+    position: sticky;
+    top: 60px; /* Altura del encabezado fijo más un poco de margen */
+    background-color: #f2f2f2;
 }
 
 input {

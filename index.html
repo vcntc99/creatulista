@@ -7,7 +7,10 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Ordenar Registros</h1>
+    <div class="fixed-header">
+        <button onclick="sortRecords()">Ordenar Registros</button>
+        <h1>Ordenar Registros</h1>
+    </div>
     <table id="record-table">
         <thead>
             <tr id="header-row">
@@ -18,7 +21,6 @@
             <!-- Lista de registros generada dinámicamente -->
         </tbody>
     </table>
-    <button onclick="sortRecords()">Ordenar Registros</button>
     <script src="script.js"></script>
 </body>
 </html>
